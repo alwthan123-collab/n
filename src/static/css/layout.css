@@ -1,0 +1,330 @@
+/* ========== تخطيط الصفحة الرئيسي ========== */
+
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.content-area {
+  min-width: 0; /* لمنع overflow */
+}
+
+.sidebar {
+  display: none; /* مخفي افتراضياً على الشاشات الصغيرة */
+  width: 300px;
+  flex-shrink: 0;
+}
+
+/* ========== الويدجتس ========== */
+.stats-widget, .popular-widget {
+  background: var(--panel);
+  border: 1px solid var(--muted);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.stats-widget h3, .popular-widget h3 {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  color: var(--text);
+  border-bottom: 1px solid var(--muted);
+  padding-bottom: 8px;
+}
+
+#site-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  text-align: center;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px;
+  background: var(--glass);
+  border-radius: 8px;
+}
+
+.stat-number {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--muted-text);
+  margin-top: 4px;
+}
+
+.popular-item {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+.popular-item:hover {
+  background: var(--glass);
+}
+
+.popular-item img {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.popular-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.popular-info h4 {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.popular-info small {
+  font-size: 11px;
+  color: var(--muted-text);
+}
+
+/* ========== النافذة المنبثقة ========== */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  backdrop-filter: blur(4px);
+}
+
+.popup-content {
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 20px;
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: auto;
+  border: 1px solid var(--muted);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.popup-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--muted-text);
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.popup-close:hover {
+  background: var(--muted);
+  color: var(--text);
+}
+
+/* ========== Loading Spinner ========== */
+.loading-spinner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--muted);
+  border-top: 4px solid var(--accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ========== تحسينات السفل ========== */
+.footer-stats {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--muted);
+}
+
+.footer-stats small {
+  color: var(--muted-text);
+  font-size: 12px;
+}
+
+/* ========== استعلامات الوسائط للتخطيط ========== */
+
+/* الأجهزة اللوحية والشاشات المتوسطة */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .main-content {
+    padding: 0 20px;
+  }
+  
+  #site-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* الشاشات الكبيرة - إظهار الشريط الجانبي */
+@media (min-width: 1200px) {
+  .main-content {
+    grid-template-columns: 1fr 300px;
+    gap: 32px;
+    padding: 0 24px;
+  }
+  
+  .sidebar {
+    display: block;
+  }
+  
+  .content-area {
+    min-width: 0;
+  }
+}
+
+/* الشاشات الكبيرة جداً */
+@media (min-width: 1600px) {
+  .main-content {
+    grid-template-columns: 1fr 320px;
+    gap: 40px;
+  }
+  
+  .sidebar {
+    width: 320px;
+  }
+}
+
+/* الهواتف الصغيرة */
+@media (max-width: 479px) {
+  .main-content {
+    padding: 0 12px;
+  }
+  
+  .stats-widget, .popular-widget {
+    padding: 12px;
+  }
+  
+  #site-stats {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .stat-item {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+  
+  .stat-number {
+    font-size: 18px;
+  }
+  
+  .popup-content {
+    margin: 20px;
+    padding: 16px;
+  }
+}
+
+/* تحسينات للوضع الأفقي على الهواتف */
+@media (max-height: 500px) and (orientation: landscape) {
+  .popup-content {
+    max-height: 80vh;
+    margin: 10px;
+  }
+  
+  .stats-widget, .popular-widget {
+    padding: 8px;
+  }
+}
+
+/* تحسينات للشاشات عالية الكثافة */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .popular-item img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* تحسينات الطباعة */
+@media print {
+  .sidebar, .popup-overlay, .loading-spinner {
+    display: none !important;
+  }
+  
+  .main-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* تحسينات للحركة المخفضة */
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation: none;
+  }
+  
+  .popular-item, .stat-item, .popup-close {
+    transition: none;
+  }
+}
+
+/* تحسينات للوضع المظلم */
+@media (prefers-color-scheme: dark) {
+  .popup-overlay {
+    background: rgba(0, 0, 0, 0.8);
+  }
+}
+
+/* تحسينات لضعاف البصر */
+@media (prefers-contrast: high) {
+  .stat-item, .popular-item {
+    border: 1px solid var(--text);
+  }
+  
+  .popup-content {
+    border: 2px solid var(--text);
+  }
+}

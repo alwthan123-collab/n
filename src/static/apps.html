@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>التطبيقات — 👑 الُإمـpєяσяـبراطـور 👑</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap nav">
+      <div class="brand"><div class="logo">👑</div><div class="brand-text"><div class="title">👑 الُإمـpєяσяـبراطـور 👑</div><div class="subtitle">تحميل مباشر — APK</div></div></div>
+      <nav class="navlinks"><a href="index.html" class="chip">الرئيسية</a><a href="apps.html" class="chip active">التطبيقات</a><a href="books.html" class="chip">الكتب</a></nav>
+      <div class="actions">
+        <div class="search"><input id="searchApps" placeholder="ابحث عن تطبيق..."></div>
+        <select id="filterCat" class="select"><option value="all">كل التصنيفات</option><option>تعليمي</option><option>أدوات</option><option>ترفيه</option><option>إنتاجية</option></select>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap">
+      <div class="section-head">
+        <h2>التطبيقات</h2>
+        <div class="controls"><select id="sortApps" class="select"><option value="new">الأحدث</option><option value="popular">الأكثر تحميلاً</option><option value="az">أ-ي</option></select></div>
+      </div>
+      <div id="appsGrid" class="grid"></div>
+    </section>
+  </main>
+
+  <footer><div class="wrap footer-grid"><div>© <span id="year1"></span> 👑 الُإمـpєяσяـبراطـور 👑</div><div>نصيحة: أضف Mirror لتحميل أسرع</div></div></footer>
+  <script src="js/script.js"></script>
+</body>
+</html>
